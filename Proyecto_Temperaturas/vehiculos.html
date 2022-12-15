@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang ="es">    
+<head>
+    <meta charset ="UTF-8">
+    <meta http-equiv ="X-UA-Compatible" content ="IE=edge">
+    <meta name ="theme-color" content ="#00ff1e">
+    <meta name ="description" content ="Control de temperaturas">
+    <meta name ="viewport" content ="width=device-width, initial-scale=1.0">
+        <link rel ="stylesheet" href ="CSS/vehiculos.css">
+        <link rel ="stylesheet" href ="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="crossorigin="anonymous"></script>
+
+    <title> Vehiculos </title>
+</head>
+<body id="body" onload="CallWebAPI()"></body>
+
+    <!-- Menu -->
+    <div class="container">
+        <!-- Div Logo -->
+            <a href="index.html"><img src="img/coltrack-horizontal.png" class="logo" alt="logo"></a>
+
+        <!--div menu-->
+            <div class="menu">
+                <ul class="menu">
+                <li><a href="index.html"> Inicio </a></li>
+                <li><a href="vehiculos.html"> Vehiculos </a></li>
+                <li><a href="iframe.html"> Reportes </a></li>
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <button class="boton"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="40" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16" color="white">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg></i>
+                </button>
+
+                <div class ="dropdown-content">
+                    <a href="index.html"> Inicio </a>
+                    <a href="vehiculos.html"> Vehiculos </a>      
+                    <a href="iframe.html"> Reportes </a>          
+                    <a href="index.html"> Logout <i id="icon" class="bi bi-box-arrow-right"></i> </a>
+                </div>
+            </div>
+
+        <!-- inicio sesion enlace -->
+        <div class="log">
+            <ul class="menuUno">
+                <li class="login"><a href="index.html"> Logout </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="separador">
+        <p> 🚚 Datos por vehiculo 🚚 </p>
+        <p id="dato1"></p>
+    </div>
+
+    <!-- DATOS -->
+    <div class="datos">
+        <!-- Filtro de datos -->
+        <div class="filtro">
+            <input type="text" id="searchInput" placeholder="Filtrar por placa" />
+        </div>
+
+        <div class="dataTable">
+            <table id="Tabla">
+                <tbody id="datos"></tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript" >
+        
+        var userName = "servWebElite";
+        var passWord = "$s3rvW3bEl1t3%";
+        
+        function authenticateUser(user, password){
+            var auth = user + ":" + password;    
+            var hash = btoa(auth); 
+            return "Basic " + hash;
+        };
+
+        // Todos los datos
+        function CallWebAPI(){    
+
+            var request = new XMLHttpRequest();
+            var autenticate = authenticateUser(userName, passWord);
+            
+            request.open("get", "https://gps.coltrack.com/gps/api.jsp", false);	
+            request.setRequestHeader("Authorization", authenticateUser(userName, passWord));  	
+            request.send();   
+            console.log("Loaded data");    
+            respuesta=JSON.parse(request.response);       
+
+            salida = respuesta.message.data;
+               
+            $("#Tabla").append('<thead><tr><th> PLACA</th><th>TEMPERATURA</th><th>HORA</th><th>LUGAR</th><th>UBICACION</th><th>CIUDAD</th><th>EVENTO</th><th>Activar</th><th>Desactivar</th></tr></thead>');
+            for (let index = 0; index < salida.length; index++) {
+                $("#Tabla").append("<tr><td>"
+                    +salida[index].PLACA+"</td><td>"
+                    +salida[index].TEMPERATURA+" ℃ "+"</td><td>"
+                    +salida[index].TIEMPO+"</td><td>"
+                    +salida[index].LUGAR+"</td><td>"
+                    +salida[index].UBICACION+"<a aria-label = 'ubicacion' name= 'enlace maps' href=  https://maps.google.com/?q="
+                    +salida[index].LATITUD+","+salida[index].LONGITUD+"> <i class='bi bi-geo-alt-fill'></i>"+"</a></td><td>"
+                    +salida[index].CIUDAD+"</td><td>"
+                    +salida[index].EVENTO+"</td><td>"
+                    +"&nbsp; &nbsp; <input aria-label ='activo' type='checkbox' id='Activo "+salida[index].NOMBRE+"' onclick='if(this.checked) localStorage.setItem(this.id,this.value); else localStorage.removeItem (this.id); cookie1()' name="+salida[index].NOMBRE+" value="+salida[index].NOMBRE+"><label for= 'firstdata' id = 'Act'> Activo </label> &nbsp; &nbsp;"+"</td><td>"
+                    +"&nbsp; &nbsp; <input aria-label ='inactivo' type ='checkbox' id = 'Inactivo "+salida[index].PLACA+"'  onclick = 'if(this.checked) localStorage.setItem(this.id,this.value); else localStorage.removeItem (this.id); cookie2()' name = "+salida[index].NOMBRE+" value ="+salida[index].NOMBRE+"> <label id = 'Inac' for='radio-01'>Inactivo</label> &nbsp; &nbsp;"
+                +"</td></tr>");   
+            };
+
+            for (var i = 0; i < localStorage.length; i++){
+
+                var key = localStorage.key(i);
+
+                document.getElementById(key).checked = 1;
+            };
+        };  
+        
+        // ----------  Save cookies Active / Inactive  ----------
+        // Save cookie from Active elements
+
+        let activos
+        function cookie1(){
+
+            activos = $('input[name="JUK232"]:checked').val() || $('input[name="SRN020"]:checked').val() || $('input[name="JUY725"]:checked').val() || $('input[name="JUZ234"]:checked').val()
+            || $('input[name="SMI928"]:checked').val()    || $('input[name="JUY806"]:checked').val()   || $('input[name="SMI929"]:checked').val() || $('input[name="USD632"]:checked').val()
+            || $('input[name="SJQ225"]:checked').val()    || $('input[name="A7U713797"]:checked').val()|| $('input[name="SWK469"]:checked').val() || $('input[name="SIQ509"]:checked').val()
+            || $('input[name="JTY281"]:checked').val()    || $('input[name="SYR983"]:checked').val()   || $('input[name="GUU153"]:checked').val() || $('input[name="SON350"]:checked').val()
+            || $('input[name="AZNB12855"]:checked').val() || $('input[name="SPO203"]:checked').val()   || $('input[name="JUZ236"]:checked').val() || $('input[name="SZP478"]:checked').val()
+            || $('input[name="JUY658"]:checked').val()    || $('input[name="SMI927"]:checked').val()   || $('input[name="JUY830"]:checked').val() || $('input[name="UPP524"]:checked').val()
+            || $('input[name="SMI930"]:checked').val()    || $('input[name="WFH450"]:checked').val()   || $('input[name="SOC020"]:checked').val() || $('input[name="TLZ068"]:checked').val()
+
+            document.cookie =""+(activos)+" = ACTIVO;  expires = 30 DEC 2023 11:59:59 UTC; Samesite = None; Secure";
+            // alert("El vehiculo de placa: "+activos+ ", se encuentra en ruta")
+        };
+
+        // Save cookie from Inactive elements
+        function cookie2(){
+
+            let inactivos = $('input[name="JUK232"]:checked').val() || $('input[name="SRN020"]:checked').val() || $('input[name="AJUY725"]:checked').val() || $('input[name="JUZ234"]:checked').val()
+            || $('input[name="SMI928"]:checked').val()    || $('input[name="JUY806"]:checked').val()    || $('input[name="SMI929"]:checked').val() || $('input[name="USD632"]:checked').val()
+            || $('input[name="SJQ225"]:checked').val()    || $('input[name="A7U713797"]:checked').val() || $('input[name="SWK469"]:checked').val() || $('input[name="SIQ509"]:checked').val()
+            || $('input[name="JTY281"]:checked').val()    || $('input[name="SYR983"]:checked').val()    || $('input[name="GUU153"]:checked').val() || $('input[name="SON350"]:checked').val()
+            || $('input[name="AZNB12855"]:checked').val() || $('input[name="SPO203"]:checked').val()    || $('input[name="JUZ236"]:checked').val() || $('input[name="SZP478"]:checked').val()
+            || $('input[name="JUY658"]:checked').val()    || $('input[name="SMI927"]:checked').val()    || $('input[name="JUY830"]:checked').val() || $('input[name="UPP524"]:checked').val()
+            || $('input[name="SMI930"]:checked').val()    || $('input[name="WFH450"]:checked').val()    || $('input[name="SOC020"]:checked').val() || $('input[name="TLZ068"]:checked').val()
+
+            document.cookie =""+(inactivos)+" = DESACTIVO;  expires = 30 DEC 2023 11:59:59 UTC; Samesite = None; Secure";
+            // alert (document.cookie)
+            // alert("El vehiculo de placa: "+activoFijo+ ", se encuentra en ruta")
+        };
+
+        // Data filter by plate
+        function filtro(){
+        let valor = document.getElementById("searchInput").value.toUpperCase();
+        let nombres = document.getElementById("datos")
+        let filas = nombres.getElementsByTagName("tr")
+
+            for(let i = 0; i < filas.length; i++){
+                let columna = filas[i].getElementsByTagName("td")[0];
+                let dato = columna.textContent;
+            
+                filas[i].style.display = dato.toUpperCase().indexOf(valor) > -1 ? "" : "none";
+            };
+        };
+
+        document.getElementById("searchInput").addEventListener("keyup", filtro);
+
+
+        // -------------------------------------------------------------------------
+    </script>
+
+    <!-- Pie de pagina -->
+    <footer class="footer">
+        2022 © Copyright Coltrack SAS. Todos los derechos reservados.
+    </footer>
+</body>
+</html>

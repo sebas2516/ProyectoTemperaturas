@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="CSS/login.css">
+	<!-- <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script> -->
+    <title> login </title>
+</head>
+<body class="body">
+		<div id="Contenedor">
+			<div class="Icon">
+				<!--Icono de usuario-->
+                <a href="index.html"><img src="img/LogoColtrack.png" class="logo" alt="logo"></a>
+			</div>
+            <br>
+
+            <form id="signup-form">
+                <!-- Email -->
+                <div class="input-group input-group-lg">
+                    <img src="/img/black-male-user-symbol.png" alt="" width="25">
+                    <input name="nickname" id="email" placeholder ="Usuario"  aria-describedby="sizing-addon1" required>
+                </div>
+
+                <br>
+
+                <!-- Contraseña -->
+                <div class="input-group input-group-lg">
+                    <img src="/img/lock.png" alt="">
+                    <input type="password" name="password" id="password" " placeholder="******" aria-describedby="sizing-addon1" required>
+                </div>
+
+                <br>
+                
+                <button class="btn btn-primary btn-block btn-signin"  id="IngresoLog" type ="submit">Entrar</button>
+                <!-- <button class="btn btn-lg btn-block btn-signup"  id="Registro" type ="submit">Registrar</button> -->
+            </form>
+		</div>		
+    
+    <div class="imagen"></div>
+    
+    <!-- Conexion Base De Datos -->
+	<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>
+    
+    <script>
+        var config = {
+            apiKey: "AIzaSyC_26hObLhRWLYZyS9_P6FcKzdf4glTNHg",
+            authDomain: "temperaturascoltrack.firebaseapp.com",
+            databaseURL: "https://temperaturascoltrack-default-rtdb.firebaseio.com",
+            storageBucket: "temperaturascoltrack.appspot.com",
+            messagingSenderId: "835071084222",
+        };
+
+        firebase.initializeApp(config);
+		const auth = firebase.auth();
+
+	</script>
+
+    <script src="JS/main.js"></script>
+
+</body>
+</html>

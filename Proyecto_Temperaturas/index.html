@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Control de temperaturas">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+    <link rel="stylesheet" href="CSS/style.css">
+    <title> Control de Temperaturas </title>
+</head>
+<body class="body">
+        <div class="container">
+            <!-- Div Logo -->
+            <div class="collapse">
+                <a href="index.html"><img src="img/coltrack-horizontal.png" class="logo" alt="logo"></a>
+            </div>
+    
+            <!-- inicio sesion enlace -->
+            <ul class="menu">
+                <a href="index.html"> Inicio </a>  
+
+                <a href="login.html"> Login </a>
+            </ul>
+            
+        </div>
+        <div class="banner"></div>
+
+        <div class="contenido">
+                <div class="columna1">
+                    <h3 class="baja">Temperatura Baja</h3>
+                    <p class="uno">La temperatura de un camión es considerada baja siempre y cuando esta sea menor a los 2℃. </p>
+                    <img class="img" src="img/Temp_01-01.png" alt="tempBaja">
+                </div>
+                
+                <div class="columna2">
+                    <h3 class="media">Temperatura Media</h3>
+                    <p class="uno">La temperatura de un camión se considerada normal siempre y cuando esta se encuentre entre 2℃&nbsp; y&nbsp; 8℃. </p>
+                    <img class="img" src="img/Temp_03-01.png" alt="tempMedia">
+                </div>
+
+                <div class="columna3">
+                    <h3 class="alta">Temperatura Alta</h3>
+                    <p class="uno">La temperatura de un camión es considerada alta siempre y cuando esta sea mayor a 8℃. </p>
+                    <img class="img" src="img/Temp_02-01.png" alt="tempAlta">
+
+
+                </div>
+        </div>
+
+            <div id ="map">
+                <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+                <script src="JS/script.js"></script>
+                <p>mapa</p>
+            </div>
+
+            <div class ="soporte">
+                <h4>DIRECCION Y SOPORTE:</h4>
+                <p class="dos">Las contingencias pueden ocurrir en cualquier momento,
+                por eso, nuestros canales de atención están disponibles
+                7x24 todos los dias del año a través de nuestro PBX..</p>
+                <table >
+                    <tr> 
+                        <td><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
+                            <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5z"/>
+                            </svg></td> 
+                        <td class="texto"> +571 338 0075</td>
+                    </tr>
+                    <tr> 
+                        <td><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                            </svg></td>
+                        <td>info@coltrack.com</td>
+                    </tr>
+                    <tr> 
+                        <td><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                            </svg></td>
+                        <td>Coltrack SAS
+                            Calle 30A # 6-22 Oficina 903
+                            Bogota, Colombia
+                        </td>
+                    <tr>
+                </table>    
+            </div>
+
+            <footer class="footer">
+                © 2022 © Copyright Coltrack SAS. Todos los derechos reservados.
+            </footer>
+</div>
+    </div>
+</body>
+</html>
