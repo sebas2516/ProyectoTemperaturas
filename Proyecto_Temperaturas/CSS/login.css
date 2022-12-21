@@ -46,6 +46,13 @@
 	margin-left: 5px;
 }
 
+.OpcionContra{
+        color:red;
+        font-size:20px;
+        text-decoration:;
+        margin:10px 0px 0px 90px;
+}
+
 i{
 	color: black;
 	font-size: 28px;
