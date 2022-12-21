@@ -2,12 +2,12 @@
 	background-image:url(/img/gps\ cuadrado__Mesa\ de\ trabajo\ 1.png);
 	/* background-image:url(/img/gps\ cuadrado.png); */
 	background-attachment: fixed;
-    background-size: 99.9% 99.9%;
+        background-size: 99.9% 99.9%;
 	background-repeat: no-repeat; 
 	
 	display: grid;
 	grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 1fr);
 	grid-column-start: 1;
 	grid-column-end: 2;
 	grid-row-start: 1;
@@ -49,8 +49,10 @@
 .OpcionContra{
         color:red;
         font-size:20px;
+        text-align:center;
         text-decoration:;
         margin:10px 0px 0px 90px;
+        padding: 0;
 }
 
 i{
@@ -81,6 +83,7 @@ i{
 	height:38px;
 	color: black;
 } 
+
 .img{
 	display: none;
 }
