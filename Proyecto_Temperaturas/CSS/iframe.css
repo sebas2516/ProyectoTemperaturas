@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 body{
     background-color: rgb(247, 239, 239);
     color: black;
@@ -8,115 +8,216 @@ body{
     background-attachment: fixed;
     background-size: cover;
 }
+    
+/* header */
+#header{
+    z-index: 1200;
+}
 
+.logoColtrack{
+    width: 60px;
+}
+
+/* Logo EliteFlowers */
+.logoElite{
+    height: 55px;
+    width: 400px;
+}
+    
+/* icon menu desplegable */
 .navbar-light .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255 )' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255 )' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");    
 }
-
-.todo{
-	display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, auto);
+    
+/*Todo el contenido  */
+.All{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, auto);
 }
-
+    
+/* Logo */
 .main-menu-logo{
-	position: fixed;
-	top:0;
-	z-index: 100;
-	width: 100%;
-	background: #142137;
-	font-family: 'Raleway', sans-serif;
+    position: fixed;
+    top:0;
+    z-index: 100;
+    width: 100%;
+    background: #03082f;
+}
+    
+/*Links navbar  */
+.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
+    color: white;
+    padding: 0px 20px;
+    font-family: 'Lato', sans-serif;
+    font-size: 25px;
+}
+
+.navbar li {
+    display: inline-block;
+    list-style: outside none none;
+    margin: .5em 1em;
 }
 
 .navbar-brand{
-	font-size: 30px;
-	font-weight: bold;
+    margin-left: -100px;
+}
+    
+.navbar a {
+    position: relative;
+    text-decoration: none;
+    font-size: 20px;
 }
 
-.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
-    color: white;
-    padding: 0px 20px;	
-    font-family: 'Raleway', sans-serif;
+.navbar a::before,
+.navbar a::after {
+    content: '';
+    height: 14px;
+    width: 14px;
+    color: #22afe6;
+    position: absolute;
+    transition: all .35s ease;
+    opacity: 0;
 }
 
-img {
-    vertical-align: middle;
-    border-style: none;
-    margin-right: 300px;
+.navbar a::before {
+    content: '';
+    right: 0;
+    top: 0;
+    color: #22afe6;
+    border-top: 3px solid #22afe6;
+    border-right: 3px solid #22afe6;
+    transform: translate(-100%, 50%);
+}
+
+.navbar a:after {
+    content: '';
+    left: 0;
+    bottom: 0;
+    color: #22afe6;
+    border-bottom: 3px solid #22afe6;
+    border-left: 3px solid #22afe6;
+    transform: translate(100%, -50%)
+}
+
+.navbar a:hover:before,
+.navbar a:hover:after {
+    transform: translate(0,0);
+    opacity: 1;
 }
 
 .nav-item a{
-	display: block;
-	font-size: 30px;
-	font-weight: bold;
-	padding: 0px 20px;
-	color: white;
-    text-align: center;
-}
-
-.separador{
-    background-color:#142137;
-    grid-column-start: 1;
-    grid-column-end: 5;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    margin-top: 100px;
-    width: 100% auto;
-    height: 85px;
-}
-
-.logoElite{
-    margin: 0;
-    height: 70px;
-}
-
-p{
-    margin: 12px;
-    text-align: center;    
+    display: block;
     font-size: 30px;
-    color: #fff;
-    font-family: Publio-Regular;
+    padding: 0px 20px;
+    color: white;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.navbar-light .navbar-toggler {
+    color: transparent;
+    border-color: transparent;
+}
+
+#vehiculos{
+    margin-left: 320px;
+}
+
+#reportes{
+    color: #22afe6;
+    margin-top: 8px;
+}
+
+#vehiculos,#logout{
+    margin-top: 8px;
+}
+
+#reportes:hover{
+    color: #22afe6;
+}
+
+#logout:hover{
+    color: #22afe6;
+}
+
+/*Datos*/
+.datos{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, auto);
+    min-height: 650px;
+    margin-top: 85px;
+    width: 100%;
 }
 
 #iframe{
-    /* margin-top: 20px; */
-    width: 100%; 
-    height: 1050;
-}
-
-.datos{
-    width: 100%;
-    height: 760px;
-    grid-column-start: 1;
-    grid-column-end: -1;
+    width: 100% auto;
+    grid-row-start: 1;
 }
 
 /*Pie de pagina*/
 .footer{
-    background-color: rgb(20, 33, 55);
+    background-color: #03082f;
     color:#fff;
     font-size: 20px;
     padding: 10px;
     text-align: center;
-    height: 45px;
+    height: 50px;
     grid-column-start: 1;
     grid-column-end: 5;
     grid-row-start: 3;
     grid-row-end: 4;
+    margin-top: 15px;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 900px){
     .logoElite{
-        width:258px;
-        height: 80px;
-        margin-top: 2.5px;
+        width:270px;
+        height: 60px;
+        padding-top: 0;
+        margin-left: 80px;
+    }
+
+    .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
+        color: white;
+        font-size: 25px;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+    }
+
+    #vehiculos{
+        margin-left: 0px;
     }
     
-    img {
-        vertical-align: middle;
-        border-style: none;
-        width: 220px;
-        margin: 0;
+    .datos{
+        width: 100%;
+        height: 750px;
+    }
+    
+    #iframe{
+        width: 100%;
+        height: 750px;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .logoElite{
+        width:258px;
+        height: 60px;
+        padding-top: 0;
+        margin-left: 0px;
+    }
+
+    #vehiculos, #reportes, #logout{
+        margin:0px;
+        padding-left: 15px;
+        width: 140px;
+    }
+
+    .navbar-brand{
+        margin: 0px;
     }
 
     .main-menu-logo{
@@ -124,48 +225,36 @@ p{
         top:0;
         z-index: 100;
         width: 100%;
-        background: #142137;
+        background: #03082f;
         font-family: 'Raleway', sans-serif;
+        margin: 0;
     }
 
     .navbar-light .navbar-toggler-icon {
         background-image: url("data:image/svg+xml,%3csvg  xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255 )' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        border: 0;
     }
 
     .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
         color: white;
-        font-size: 20px;
-    }
-
-    p{
-        font-size: 15px;
+        font-size: 25px;
+        padding: 0;
         margin: 0;
-        letter-spacing: 1px;
+        text-align: left;
     }
 
-    .datos{
-        width: 100%;
-        height: 760px;
-        grid-column-start: 1;
-        grid-column-end: -1;
+    #datos{
+        width: 100% auto;
     }
 
     #iframe{
-        width: 100%;
+        width: 380px;
     }
-
-    .separador{
-        grid-column-start: 1;
-        grid-column-end: 5;
-        width: 100%;
-        height: 86px;
-        margin-top: 90px;
-    }
-
+  
     .footer{
         font-size: 15px;
         text-align: center;
         height: 55px;
+        grid-row-start: 3;
+        grid-row-end: 4;
     }
 }

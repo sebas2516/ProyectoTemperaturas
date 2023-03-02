@@ -1,22 +1,26 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8">
+<head>
+    <meta name="theme-color" content="#4285f4"/>
+    <meta name="description" content="Seguimiento de vehiculos ">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="CSS/vehiculos.css">
-    <link rel="icon" type="image/jpg" href="/img/favicon.ico"/>
-    <title> Vehículos </title>
-  </head>
-  <body id ="body" onload="CallWebAPI()">
-  <header class="header">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css" />
+        <link rel="icon" type="image/jpg" href="/img/favicon.ico"/>
+        <link rel="stylesheet" href="CSS/leaflet-search.css" />
+        <link rel="stylesheet" href="CSS/vehiculos.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+            <title> Vehiculos </title>
+</head>
+    
+<body id ="body" onload="CallWebAPI()">
+    <header class="header">
         <div class="main-menu-logo bg-none " id="header">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
                     <a class="navbar-brand" href="/index.html">
-                        <img src="/img/coltrack-horizontal.png" alt="LogoColtrack" >
+                        <img src="https://mlanvprljx6f.i.optimole.com/cb:nPcu.35a45/w:150/h:51/q:mauto/rt:fill/g:ce/https://eliteflower.com/wp-content/uploads/2022/10/Logo-The-Elite-Flower-Horizontal-1-1-1.svg" class="logoElite" alt="LogoEliteFlowers">
                     </a>
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,20 +29,21 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
-                            <!-- <li class="nav-item active">
-                                <a class="nav-link" href="/index.html">Inicio</span></a>
-                            </li> -->
                             <li class="nav-item active">
-                                <a class="nav-link" href="/vehiculos.html">Vehículos</span></a>
+                                <a id ="vehiculos" class="nav-link" href="/vehiculos.html"><span>Vehículos</span></a>
                             </li>
 
                             <li class="nav-item active">
-                                <a class="nav-link" href="/iframe.html">Reportes</span></a>
+                                <a id ="reportes" class="nav-link" href="/iframe.html"><span>Informes</span></a>
                             </li>
 
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/login.html">Logout</span></a>
-                            </li>
+                            <li class="nav-item active"> 
+                                <a id ="logout" class="nav-link" href="/login.html"><span>Logout</span></a>
+                            </li> 
+
+                            <li class="nav-item active"> 
+                                <a href=""><img class="logoColtrack" src="/img/Coltrack-03.png" alt="LogoColtrack" ></a>
+                            </li> 
                         </ul>
                     </div>
                 </div>
@@ -46,131 +51,175 @@
         </div>
     </header>
 
-    <script src ="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src ="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src ="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-    <div class="todo">
-
-        <div class="separador">
-            <div class="Elite"><p> VEHICULOS:<img src="https://mlanvprljx6f.i.optimole.com/cb:nPcu.35a45/w:150/h:51/q:mauto/rt:fill/g:ce/https://eliteflower.com/wp-content/uploads/2022/10/Logo-The-Elite-Flower-Horizontal-1-1-1.svg" class="logoElite" alt=""></p></div>
-            <!-- <div class="reportes"><p class="one">Vehículos: The Elite Flower</p></div> -->
-        </div>
-
+    <div class="All">
         <!-- DATOS -->
         <div class ="datos">
-            <!-- Filtro de datos -->
-            <div class ="filtro">
-            <input type ="text" id ="searchInput" placeholder ="Filtrar por placa" />
-            </div>
+            <!-- Mostrar mapa dispositivos moviles -->
+            <a class="viewMap" href='#popup1'>Mostrar Mapa <i style="color: #fff;" class="bi bi-map-fill"></i></a>
+            <span class="material-symbols-outlined">local_shipping</span>
+            <!-- <input class="input2" type ="text" id ="searchInput" onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder = "Filtrar" /> -->
 
+            <!--dataTable-->
             <div class ="dataTable">
                 <table id ="Tabla">
-                    <tbody id  ="datos">
+                    <tbody id ="datos">
+                        <!-- <tr>
+                            <th><input type ="text" id ="searchInput" onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder = "Filtrar" /></th>
+                            <th>PLACA</th>
+                            <th>TEMPE</th>
+                            <th>UBICACION</th>
+                            <th>ESTADO</th>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>SRN020</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>JUK232</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>JUY222</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>JTR444</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>FSS787</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>GHD478</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>AEC102</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>DAW887</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>SAW555</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>ERT789</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>GDS144</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>VUR147</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>F4F82</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>JFS282</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>PIR175</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>WEA441</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>VZZ282</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-truck"></i></td>
+                            <td>EEE222</td>
+                            <td>-5.4375 ℃</td>
+                            <td>A 2525 m. de Estación De El Corzo</td>
+                            <td><input type="checkbox" name="input"></td>
+                        </tr>  -->
                     </tbody>
                 </table>
             </div>
+                    
+            <!-- PopUp Dispositivos Moviles -->
+            <div id="popup1" class="overlay">
+                <div class="popup" id="pop">
+                    <div id="findbox"></div>
+                        <div id="map"></div>
+                        <a class="close" href="#">&times;</a>
+                    </div>
+                </div>
+            </div>
+                
+            <!-- Footer -->
+            <footer class="footer">
+                <small> © Copyright Coltrack SAS. Todos los derechos reservados. </small>
+            </footer>
         </div>
-
-        <script type ="text/javascript" >
-            var userName = "servWebElite";
-            var passWord = "$s3rvW3bEl1t3%";
-                
-            function authenticateUser(user, password){
-                var auth = user + ":" + password;    
-                var hash = btoa(auth); 
-                return "Basic " + hash;
-            };
-
-            // Todos los datos
-            function CallWebAPI(){    
-
-                var request = new XMLHttpRequest();
-                var autenticate = authenticateUser(userName, passWord);
-                    
-                request.open("get", "https://gps.coltrack.com/gps/api.jsp", false);	
-                request.setRequestHeader("Authorization", authenticateUser(userName, passWord));  	
-                request.send();   
-                console.log("Loaded data");    
-                respuesta=JSON.parse(request.response);       
-
-                salida = respuesta.message.data;
-                    
-                $("#Tabla").append('<thead><tr><th> PLACA</th><th>TEMPERATURA</th><th>HORA</th><th>LUGAR</th><th>UBICACION</th><th>CIUDAD</th><th>EVENTO</th><th>Activar</th><th>Desactivar</th></tr></thead>');
-                for (let index = 0; index < salida.length; index++) {
-                    $("#Tabla").append("<tr><td>"
-                        +salida[index].PLACA+"</td><td>"
-                        +salida[index].TEMPERATURA+" ℃ "+"</td><td>"
-                        +salida[index].TIEMPO+"</td><td>"
-                        +salida[index].LUGAR+"</td><td>"
-                        +salida[index].UBICACION+"<a aria-label = 'ubicacion' name= 'enlace maps' href=  https://maps.google.com/?q="
-                        +salida[index].LATITUD+","+salida[index].LONGITUD+"><i class='bi bi-geo-alt-fill'></i>"+"</a></td><td>"
-                        +salida[index].CIUDAD+"</td><td>"
-                        +salida[index].EVENTO+"</td><td>"
-                        +"&nbsp; &nbsp; <input aria-label ='activo' type='checkbox' id='Activo "+salida[index].NOMBRE+"' onclick='if(this.checked) localStorage.setItem(this.id,this.value); else localStorage.removeItem (this.id); cookie1()' name="+salida[index].NOMBRE+" value="+salida[index].NOMBRE+"><label id = 'Act'> Activo </label> &nbsp; &nbsp;"+"</td><td>"
-                        +"&nbsp; &nbsp; <input aria-label ='inactivo' type ='checkbox' id = 'Inactivo "+salida[index].PLACA+"'  onclick = 'if(this.checked) localStorage.setItem(this.id,this.value); else localStorage.removeItem (this.id); cookie2()' name = "+salida[index].NOMBRE+" value ="+salida[index].NOMBRE+"><label id = 'Inac'>Inactivo</label> &nbsp; &nbsp;"
-                    +"</td></tr>");   
-                };
-
-                for (var i = 0; i < localStorage.length; i++){
-                    var key = localStorage.key(i);
-                    document.getElementById(key).checked = 1;
-                };
-
-            };  
-                
-            // Save cookies Active / Inactive 
-            // Save cookie from Active elements
-            let activos
-            function cookie1(){
-
-                activos = $('input[name="JUK232"]:checked').val() || $('input[name="SRN020"]:checked').val() || $('input[name="JUY725"]:checked').val() || $('input[name="JUZ234"]:checked').val()
-                || $('input[name="SMI928"]:checked').val()    || $('input[name="JUY806"]:checked').val()   || $('input[name="SMI929"]:checked').val() || $('input[name="USD632"]:checked').val()
-                || $('input[name="SJQ225"]:checked').val()    || $('input[name="A7U713797"]:checked').val()|| $('input[name="SWK469"]:checked').val() || $('input[name="SIQ509"]:checked').val()
-                || $('input[name="JTY281"]:checked').val()    || $('input[name="SYR983"]:checked').val()   || $('input[name="GUU153"]:checked').val() || $('input[name="SON350"]:checked').val()
-                || $('input[name="AZNB12855"]:checked').val() || $('input[name="SPO203"]:checked').val()   || $('input[name="JUZ236"]:checked').val() || $('input[name="SZP478"]:checked').val()
-                || $('input[name="JUY658"]:checked').val()    || $('input[name="SMI927"]:checked').val()   || $('input[name="JUY830"]:checked').val() || $('input[name="UPP524"]:checked').val()
-                || $('input[name="SMI930"]:checked').val()    || $('input[name="WFH450"]:checked').val()   || $('input[name="SOC020"]:checked').val() || $('input[name="TLZ068"]:checked').val()
-
-                document.cookie =""+(activos)+" = ACTIVO;  expires = 30 DEC 2023 11:59:59 UTC; Samesite = None; Secure";
-            };
-
-            // Save cookie from Inactive elements
-            function cookie2(){
-
-                let inactivos = $('input[name="JUK232"]:checked').val() || $('input[name="SRN020"]:checked').val() || $('input[name="AJUY725"]:checked').val() || $('input[name="JUZ234"]:checked').val()
-                || $('input[name="SMI928"]:checked').val()    || $('input[name="JUY806"]:checked').val()    || $('input[name="SMI929"]:checked').val() || $('input[name="USD632"]:checked').val()
-                || $('input[name="SJQ225"]:checked').val()    || $('input[name="A7U713797"]:checked').val() || $('input[name="SWK469"]:checked').val() || $('input[name="SIQ509"]:checked').val()
-                || $('input[name="JTY281"]:checked').val()    || $('input[name="SYR983"]:checked').val()    || $('input[name="GUU153"]:checked').val() || $('input[name="SON350"]:checked').val()
-                || $('input[name="AZNB12855"]:checked').val() || $('input[name="SPO203"]:checked').val()    || $('input[name="JUZ236"]:checked').val() || $('input[name="SZP478"]:checked').val()
-                || $('input[name="JUY658"]:checked').val()    || $('input[name="SMI927"]:checked').val()    || $('input[name="JUY830"]:checked').val() || $('input[name="UPP524"]:checked').val()
-                || $('input[name="SMI930"]:checked').val()    || $('input[name="WFH450"]:checked').val()    || $('input[name="SOC020"]:checked').val() || $('input[name="TLZ068"]:checked').val()
-                
-                document.cookie =""+(inactivos)+" = DESACTIVO;  expires = 30 DEC 2023 11:59:59 UTC; Samesite = None; Secure";
-            };
-
-            // Data filter by plate
-            function filtro(){
-                let valor = document.getElementById("searchInput").value.toUpperCase();
-                let nombres = document.getElementById("datos")
-                let filas = nombres.getElementsByTagName("tr")
-
-                for(let i = 0; i < filas.length; i++){
-                    let columna = filas[i].getElementsByTagName("td")[0];
-                    let dato = columna.textContent;
-                    
-                    filas[i].style.display = dato.toUpperCase().indexOf(valor) > -1 ? "" : "none";
-                };
-            };
-            document.getElementById("searchInput").addEventListener("keyup", filtro);
-        </script>
-
-        <!-- Pie de pagina -->
-        <footer class="footer">
-            2022 © Copyright Coltrack SAS. Todos los derechos reservados.
-        </footer>
     </div>
-</body>
-</html>
+
+    <script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
+    <script src="JS/leaflet-search.js"></script>
+    <script src="/JS/search.js"></script>
+    <script src ="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>    <script src ="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

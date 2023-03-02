@@ -1,21 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4285f4"/>
+    <meta name="description" content="Seguimiento de vehiculos ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src ="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>    <script src ="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="icon" type="image/jpg" href="/img/favicon.ico"/>
-<link rel="stylesheet" href="CSS/iframe.css">
-    <title> Reportes </title>
+    <link rel="stylesheet" href="CSS/iframe.css">
+    <title> Vehiculos </title>
 </head>
-<body>
+<body id ="body">
     <header class="header">
         <div class="main-menu-logo bg-none " id="header">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
                     <a class="navbar-brand" href="/index.html">
-                        <img src="/img/coltrack-horizontal.png" alt="LogoColtrack" >
+                        <img src="https://mlanvprljx6f.i.optimole.com/cb:nPcu.35a45/w:150/h:51/q:mauto/rt:fill/g:ce/https://eliteflower.com/wp-content/uploads/2022/10/Logo-The-Elite-Flower-Horizontal-1-1-1.svg" class="logoElite" alt="">
                     </a>
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,49 +25,40 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
-                            <!-- <li class="nav-item active">
-                                <a class="nav-link" href="/index.html">Inicio</span></a>
-                            </li> -->
                             <li class="nav-item active">
-                                <a class="nav-link" href="/vehiculos.html">Vehículos</span></a>
+                                <a id ="vehiculos" class="nav-link" href="/vehiculos.html"><span>Vehículos</span></a>
                             </li>
 
                             <li class="nav-item active">
-                                <a class="nav-link" href="/iframe.html">Reportes</span></a>
+                                <a id ="reportes" class="nav-link" href="/iframe.html"><span>Informes</span></a>
                             </li>
 
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/login.html">Logout</span></a>
-                            </li>
+                            <li class="nav-item active"> 
+                                <a id ="logout" class="nav-link" href="/login.html"><span>Logout</span></a>
+                            </li> 
+
+                            <li class="nav-item active"> 
+                                <!-- <img src="/img/Coltrack-03.png" alt="LogoColtrack" > -->
+                                <a href="/login.html"><img class="logoColtrack" src="/img/Coltrack-03.png" alt="LogoColtrack" ></a>
+                            </li> 
                         </ul>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
-    
-    <script src ="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src ="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src ="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <div class="todo">
-        <div class="separador">
-            <div class="Elite"><p> REPORTES:<img src="https://mlanvprljx6f.i.optimole.com/cb:nPcu.35a45/w:150/h:51/q:mauto/rt:fill/g:ce/https://eliteflower.com/wp-content/uploads/2022/10/Logo-The-Elite-Flower-Horizontal-1-1-1.svg" class="logoElite" alt=""></p></div>
-            <!-- <div class="reportes"><p class="one">Reportes: The Elite Flower</p></div> -->
-        </div>
-    
-        <div class="datos">
+    <div class="All">
+        <!-- DATOS -->
+        <div class ="datos">
             <div id="iframe">
-                <!-- <iframe title="Reporte Viajes Temperatura Elite Flower - Página 1" width="100%" height="768" src="https://app.powerbi.com/view?r=eyJrIjoiNmY5MzNlODEtMjRkMi00Mzc2LWFjYzQtY2E0MjMwYWJiYjNmIiwidCI6IjZjNjY4YTgwLTMyNDItNDIxZC05ZjM1LTQ0NjMxZjE2ZjZiMCJ9" frameborder="10"></iframe>         -->
-                <iframe title="Temperaturas Monitoreo Inteligente Camiones V2" 
-                    width="100%" height="768" src="https://app.powerbi.com/view?r=eyJrIjoiNGNhMTBhMjMtYWJkOC00ZTRiLTkwOWYtYTM0ZGYwNTFiOWI1IiwidCI6IjZjNjY4YTgwLTMyNDItNDIxZC05ZjM1LTQ0NjMxZjE2ZjZiMCJ9&pageName=ReportSection19a8e5b49b882e198f76" frameborder="0">
-                </iframe>
+                <iframe title="Temperaturas Monitoreo Inteligente Camiones V2"  width="100%" height="768" src="https://app.powerbi.com/view?r=eyJrIjoiNGNhMTBhMjMtYWJkOC00ZTRiLTkwOWYtYTM0ZGYwNTFiOWI1IiwidCI6IjZjNjY4YTgwLTMyNDItNDIxZC05ZjM1LTQ0NjMxZjE2ZjZiMCJ9&pageName=ReportSection19a8e5b49b882e198f76" frameborder="0"></iframe>
             </div>
         </div>
-            
-        <!-- Pie de pagina -->
+                
+        <!-- Footer -->
         <footer class="footer">
-            © 2022 © Copyright Coltrack SAS. Todos los derechos reservados.
+            <small> © Copyright Coltrack SAS. Todos los derechos reservados. </small>
         </footer>
     </div>
 </body>

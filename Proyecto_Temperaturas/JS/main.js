@@ -1,3 +1,4 @@
+// Sign-up
 // const signupForm = document.querySelector('#signup-form');
 
 // signupForm.addEventListener('submit',(e)=>{
@@ -50,7 +51,9 @@ viewPassword.addEventListener('click', (e)=>{
         password.type = 'text'  
         document.getElementById('view1').className = 'bi bi-eye-fill'
         click = true
+
     }else if(click){
+        
         password.type = 'password'
         document.getElementById('view1').className = 'bi bi-eye-slash-fill'
         click = false
